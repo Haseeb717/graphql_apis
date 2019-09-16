@@ -30,6 +30,12 @@ class User < ApplicationRecord
 	  self[column]
 	end
 
+	def send_verification_email
+		generate_token(:verification_token)
+	  save!
+	  UserMailer.verification_email(self).deliver#
+	end
+
 	def self.verify(token)
 		User.find_by(token: token)
 	end

@@ -18,7 +18,7 @@ module Mutations
 
       user = current_user
 
-      if !user.has_role? :admin && !user.has_role? :user
+      if user.has_role? :agent
         raise GraphQL::ExecutionError.new("Not Allowed")
       end
 

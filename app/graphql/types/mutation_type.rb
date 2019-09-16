@@ -4,5 +4,6 @@ module Types
     field :signin_user, mutation: Mutations::SigninUser
     field :change_password, mutation: Mutations::ChangePassword
     field :forgot_password, mutation: Mutations::ForgotPassword
+    field :send_verification, mutation: Mutations::SendVerification
   end
 end

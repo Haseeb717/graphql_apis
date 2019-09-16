@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_075957) do
+ActiveRecord::Schema.define(version: 2019_09_16_221250) do
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_075957) do
     t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.text "token"
+    t.string "verification_token"
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|

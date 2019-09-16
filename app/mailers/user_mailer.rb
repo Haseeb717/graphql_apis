@@ -11,4 +11,11 @@ class UserMailer < ApplicationMailer
 	  
 	  mail to: user.email, :subject => 'Reset password instructions'
 	end
+
+  def verification_email(user)
+    @user = user
+    @greeting = "Hi"
+    
+    mail to: user.email, :subject => 'Reset verification email'
+  end
 end

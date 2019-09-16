@@ -12,11 +12,6 @@ module Mutations
       
       user = User.find_by_email(email)
       if user
-
-        if !user.has_role? :admin && !user.has_role? :agent
-          raise GraphQL::ExecutionError.new("Not Allowed")
-        end
-
         user.send_forgot_email
         {message: "Email Send to user"}    
       else

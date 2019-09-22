@@ -33,6 +33,8 @@ gem 'graphql', '1.8.13', group: :development
 gem 'graphiql-rails', '1.5.0', group: :development
 
 gem "rolify",        :git => "git://github.com/EppO/rolify.git"
+
+gem 'hawk-auth'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

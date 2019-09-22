@@ -9,7 +9,7 @@ module Mutations
     argument :email, String, required: true
     argument :password, String, required: true
 
-    field :token, String, null: true
+    field :key, String, null: true
     field :user, Types::UserType, null: true
 
     def resolve(email: nil,password: nil)
@@ -22,9 +22,9 @@ module Mutations
       return unless user
       return unless user.authenticate(password)
 
-      token = user.set_authentication_token(:token)
+      key = user.set_authentication_token(:token)
 
-      { user: user, token: token }
+      { user: user, key: token }
     end
   end
 end

@@ -1,4 +1,5 @@
 class GraphqlController < ApplicationController
+  include HawkAuthentication
   def execute
     variables = ensure_hash(params[:variables])
     query = params[:query]
@@ -17,9 +18,14 @@ class GraphqlController < ApplicationController
 
   def current_user
     return nil if request.headers['Authorization'].blank?
-    token = request.headers['Authorization'].split(' ').last
-    return nil if token.blank?
-    User.verify(token)
+    headers = request.headers['Authorization']
+    return nil if headers.blank?
+    verification = verify_hawk(headers,request.method.to_s,request.path)
+    if verification == true
+      User.find_by(token: headers[:id])
+    else
+      nil
+    end
   end
 
   # Handle form data, JSON body, or a blank value
